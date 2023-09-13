@@ -1,0 +1,12 @@
+Package: grinch
+Title: Simple and efficient calculations of different means
+Version: 0.0.0.9000
+Authors@R:
+    person("Josh", "Errickson", , "josh@errickson.net", role = c("aut", "cre"))
+Description: Provides simple and efficient functions to calculate different
+             means, such as arimatic, geometric, harmonic, etc.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3

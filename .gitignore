@@ -1,0 +1,16 @@
+*.Rcheck
+*.tar.gz
+*.so
+*.o
+.local
+src-*
+./grinch_*
+*.swp
+.pkgexclude
+inst/doc
+.Rproj.user
+.DS_Store
+lib/*
+/Meta/
+/Doc/*.R*
+/doc/
