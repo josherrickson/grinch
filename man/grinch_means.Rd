@@ -7,25 +7,49 @@
 \alias{quadratic.mean}
 \title{You're a \code{mean} one, Mr. Grinch}
 \usage{
-arithmetic.mean(x, ...)
+arithmetic.mean(x, trim = 0, na.rm = FALSE, ...)
 
-geometric.mean(x, ..., zero.propagate = FALSE)
+geometric.mean(
+  x,
+  trim = 0,
+  na.rm = FALSE,
+  ...,
+  zero.action = c("keep", "drop", "ignore")
+)
 
-harmonic.mean(x, ...)
+harmonic.mean(x, trim = 0, na.rm = FALSE, ...)
 
-quadratic.mean(x, ...)
+quadratic.mean(x, trim = 0, na.rm = FALSE, ...)
 }
 \arguments{
-\item{x}{An R object. Supports all type that \code{mean()} supports.}
+\item{...}{further arguments passed to or from other methods.}
 
-\item{...}{Additional arguments such as \code{trim} or \code{na.rm}}
+\item{zero.action}{What action should be taken if there are zeroes in
+\code{x}? See Details.}
 
-\item{zero.propagate}{Logical, default \code{FALSE}. Should 0's be dropped
-or propgated?}
+\item{x:}{An R object. Currently there are methods for numeric/logical
+vectors and date, date-time and time interval objects. Complex vectors are
+allowed for ‘trim = 0’, only.}
+
+\item{trim:}{the fraction (0 to 0.5) of observations to be trimmed from each
+end of ‘x’ before the mean is computed. Values of trim outside that range
+are taken as the nearest endpoint.}
+
+\item{na.rm:}{a logical evaluating to \code{TRUE} or \code{FALSE} indicating
+whether \code{NA} values should be stripped before the computation
+proceeds. Default is \code{FALSE}.}
 }
 \value{
-The arithmetic mean
+The requested mean
 }
 \description{
 You're a \code{mean} one, Mr. Grinch
+}
+\details{
+For \code{geometric.mean}, by default, any zeroes in \code{x}
+causes the geometric mean to be identically 0. This is the default action
+for \code{zero.action = "keep"}. The other options are \code{zero.action =
+  "drop"}, which completely drops the zeroes before calculating the harmonic
+mean, and \code{zero.action = "ignore"}, which ignores the zeroes when
+computing the product, but includes them in $n$ for the root.
 }
