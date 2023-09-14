@@ -42,5 +42,39 @@ test_that("quadratic mean", {
   x <- c(1, 4, 4)
   expect_true(all.equal(quadratic.mean(x), sqrt(11)))
 
+})
+
+test_that("cubic mean", {
+
+  x <- c(1, 4, 4)
+  expect_true(all.equal(cubic.mean(x), 43^(1/3)))
+
+})
+
+test_that("quasi_arithmetic.mean", {
+  x <- c(5, 2, 6, 6)
+
+  expect_identical(quasi_arithmetic.mean(x,
+                                         function(x) x,
+                                         function(x) x),
+                   arithmetic.mean(x))
+  expect_identical(quasi_arithmetic.mean(x,
+                                         function(x) log(x),
+                                         function(x) exp(x)),
+                   geometric.mean(x))
+  expect_identical(quasi_arithmetic.mean(x,
+                                         function(x) 1/x,
+                                         function(x) 1/x),
+                   harmonic.mean(x))
+
+  expect_identical(quasi_arithmetic.mean(x,
+                                         function(x) x^2,
+                                         function(x) x^{1/2}),
+                   quadratic.mean(x))
+
+  expect_identical(quasi_arithmetic.mean(x,
+                                         function(x) x^3,
+                                         function(x) x^{1/3}),
+                   power.mean(x, p =3))
 
 })

@@ -5,6 +5,11 @@
 \alias{geometric.mean}
 \alias{harmonic.mean}
 \alias{quadratic.mean}
+\alias{cubic.mean}
+\alias{generalized.mean}
+\alias{power.mean}
+\alias{lehmer.mean}
+\alias{quasi_arithmetic.mean}
 \title{You're a \code{mean} one, Mr. Grinch}
 \usage{
 arithmetic.mean(x, trim = 0, na.rm = FALSE, ...)
@@ -20,6 +25,24 @@ geometric.mean(
 harmonic.mean(x, trim = 0, na.rm = FALSE, ...)
 
 quadratic.mean(x, trim = 0, na.rm = FALSE, ...)
+
+cubic.mean(x, trim = 0, na.rm = FALSE, ...)
+
+generalized.mean(x, p = 2, trim = 0, na.rm = FALSE, ...)
+
+power.mean(x, p = 2, trim = 0, na.rm = FALSE, ...)
+
+lehmer.mean(x, p = 2, trim = 0, na.rm = FALSE, ...)
+
+quasi_arithmetic.mean(
+  x,
+  f,
+  finv,
+  trim = 0,
+  na.rm = FALSE,
+  ...,
+  ensure_inverse = TRUE
+)
 }
 \arguments{
 \item{...}{further arguments passed to or from other methods.}
@@ -38,6 +61,11 @@ are taken as the nearest endpoint.}
 \item{na.rm:}{a logical evaluating to \code{TRUE} or \code{FALSE} indicating
 whether \code{NA} values should be stripped before the computation
 proceeds. Default is \code{FALSE}.}
+
+\item{ensure_inverses}{Logical. \code{quasi_arithmetic.mean} attempts to
+ensure that \code{f} and \code{finv} are actually inverses by ensuring
+that \code{f(finv(x)) == x} and \code{finv(f(x)) == x}. Set
+\code{ensure_inverses} to \code{FALSE} to disable this check.}
 }
 \value{
 The requested mean
@@ -46,9 +74,20 @@ The requested mean
 You're a \code{mean} one, Mr. Grinch
 }
 \details{
-For \code{geometric.mean}, by default, any zeroes in \code{x}
-causes the geometric mean to be identically 0. This is the default action
-for \code{zero.action = "keep"}. The other options are \code{zero.action =
+Differents means are defined on different sets of numbers:
+\itemize{
+\item \code{arithmetic.mean}: Real or complex numbers
+\item \code{geometric.mean}: Non-negative real numbers. (See below about
+behavior with a zero.)
+\item \code{harmonic.mean}: Positive real numbers.
+\item \code{generalized.mean}/\code{power.mean} (including
+\code{quadratic.mean} and \code{cubic.mean}): Real numbers.
+\item \code{lehmer.mean}: Real numbers.
+}
+
+For \code{geometric.mean}, by default, any zeroes in \code{x} causes the
+geometric mean to be identically 0. This is the default action for
+\code{zero.action = "keep"}. The other options are \code{zero.action =
   "drop"}, which completely drops the zeroes before calculating the harmonic
 mean, and \code{zero.action = "ignore"}, which ignores the zeroes when
 computing the product, but includes them in $n$ for the root.
