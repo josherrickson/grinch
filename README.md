@@ -3,7 +3,7 @@
 You're a `mean` one, Mr. Grinch
 
 <!-- badges: start -->
-[![R-build-check](https://github.com/josherrickson/grinch/workflows/R-build-check/badge.svg)](https://github.com/josherrickson/grinch/actions)
+[![R-CMD-check](https://github.com/josherrickson/grinch/workflows/R-CMD-check/badge.svg)](https://github.com/josherrickson/grinch/actions)
 <!-- badges: end -->
 
 ## Overview
