@@ -16,19 +16,24 @@
 ##'   "drop"}, which completely drops the zeroes before calculating the harmonic
 ##'   mean, and \code{zero.action = "ignore"}, which ignores the zeroes when
 ##'   computing the product, but includes them in $n$ for the root.
-##' @param x: An R object. Currently there are methods for numeric/logical
+##' @param x An R object. Currently there are methods for numeric/logical
 ##'   vectors and date, date-time and time interval objects. Complex vectors are
 ##'   allowed for ‘trim = 0’, only.
-##' @param trim: the fraction (0 to 0.5) of observations to be trimmed from each
+##' @param p Power to be used for computation of generalized mean.
+##' @param f Function to be used in computation of quasi-arithmetic mean. Must
+##'   be inverse of \code{finv}.
+##' @param finv Function to be used in computation of quasi-arithmetic mean.
+##'   Must be inverse of \code{f}.
+##' @param trim the fraction (0 to 0.5) of observations to be trimmed from each
 ##'   end of ‘x’ before the mean is computed. Values of trim outside that range
 ##'   are taken as the nearest endpoint.
-##' @param na.rm: a logical evaluating to \code{TRUE} or \code{FALSE} indicating
+##' @param na.rm a logical evaluating to \code{TRUE} or \code{FALSE} indicating
 ##'   whether \code{NA} values should be stripped before the computation
 ##'   proceeds. Default is \code{FALSE}.
 ##' @param ... further arguments passed to or from other methods.
 ##' @param zero.action What action should be taken if there are zeroes in
 ##'   \code{x}? See Details.
-##' @param ensure_inverses Logical. \code{quasi_arithmetic.mean} attempts to
+##' @param ensure_inverse Logical. \code{quasi_arithmetic.mean} attempts to
 ##'   ensure that \code{f} and \code{finv} are actually inverses by ensuring
 ##'   that \code{f(finv(x)) == x} and \code{finv(f(x)) == x}. Set
 ##'   \code{ensure_inverses} to \code{FALSE} to disable this check.

@@ -45,24 +45,32 @@ quasi_arithmetic.mean(
 )
 }
 \arguments{
+\item{x}{An R object. Currently there are methods for numeric/logical
+vectors and date, date-time and time interval objects. Complex vectors are
+allowed for ‘trim = 0’, only.}
+
+\item{trim}{the fraction (0 to 0.5) of observations to be trimmed from each
+end of ‘x’ before the mean is computed. Values of trim outside that range
+are taken as the nearest endpoint.}
+
+\item{na.rm}{a logical evaluating to \code{TRUE} or \code{FALSE} indicating
+whether \code{NA} values should be stripped before the computation
+proceeds. Default is \code{FALSE}.}
+
 \item{...}{further arguments passed to or from other methods.}
 
 \item{zero.action}{What action should be taken if there are zeroes in
 \code{x}? See Details.}
 
-\item{x:}{An R object. Currently there are methods for numeric/logical
-vectors and date, date-time and time interval objects. Complex vectors are
-allowed for ‘trim = 0’, only.}
+\item{p}{Power to be used for computation of generalized mean.}
 
-\item{trim:}{the fraction (0 to 0.5) of observations to be trimmed from each
-end of ‘x’ before the mean is computed. Values of trim outside that range
-are taken as the nearest endpoint.}
+\item{f}{Function to be used in computation of quasi-arithmetic mean. Must
+be inverse of \code{finv}.}
 
-\item{na.rm:}{a logical evaluating to \code{TRUE} or \code{FALSE} indicating
-whether \code{NA} values should be stripped before the computation
-proceeds. Default is \code{FALSE}.}
+\item{finv}{Function to be used in computation of quasi-arithmetic mean.
+Must be inverse of \code{f}.}
 
-\item{ensure_inverses}{Logical. \code{quasi_arithmetic.mean} attempts to
+\item{ensure_inverse}{Logical. \code{quasi_arithmetic.mean} attempts to
 ensure that \code{f} and \code{finv} are actually inverses by ensuring
 that \code{f(finv(x)) == x} and \code{finv(f(x)) == x}. Set
 \code{ensure_inverses} to \code{FALSE} to disable this check.}
