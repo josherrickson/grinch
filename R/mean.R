@@ -98,7 +98,7 @@ harmonic.mean <- function(x,
     return(NaN)
   }
 
-  length(x)/sum(1/x, na.rm = na.rm, ...)
+  length(x)/sum(1/x, na.rm = na.rm)
 }
 
 ##' @rdname grinch_means
@@ -131,7 +131,7 @@ generalized.mean <- function(x,
     x <- x[!is.na(x)]
   }
 
-  ((1/length(x))*sum(x^p, ...))^(1/p)
+  ((1/length(x))*sum(x^p, na.rm = na.rm))^(1/p)
 }
 
 ##' @rdname grinch_means
@@ -150,7 +150,7 @@ lehmer.mean <- function(x,
     x <- x[!is.na(x)]
   }
 
-  sum(x^p)/sum(x^(p-1))
+  sum(x^p, na.rm = na.rm)/sum(x^(p-1), na.rm = na.rm)
 }
 
 ##' @rdname grinch_means
@@ -172,5 +172,5 @@ quasi_arithmetic.mean <- function(x,
     stopifnot(isTRUE(all.equal(finv(f(x)), x)))
   }
 
-  finv(sum(f(x, ...), ..., na.rm = na.rm)/length(x), ...)
+  finv(sum(f(x, ...), na.rm = na.rm)/length(x), ...)
 }
