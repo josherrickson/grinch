@@ -7,7 +7,6 @@ check.R
 .pkgexclude
 ^.*\.Rproj$
 ^\.Rproj\.user$
-tests/testthat/test.notforCRAN.R
 man-roxygen
 README.md
 .github

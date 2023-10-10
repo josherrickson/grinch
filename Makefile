@@ -21,7 +21,8 @@ dependencies: FUNC=install_deps
 dependencies: DEVTOOLSARG=dependencies=TRUE
 
 .PHONY:test
-test: FUNC=test
+test:
+	@$(RCMD) "tinytest::test_all('.')"
 
 .PHONY:check
 check: FUNC=check
@@ -63,7 +64,7 @@ check_rhub: DEVTOOLSARG=interactive=FALSE
 build_site: document
 	@$(RCMD) "devtools:::build_site(quiet=FALSE)"
 
-dependencies test check document vignette clean-vignette build check_win check_win_dev check_win_old check_rhub: .devtools
+dependencies check document vignette clean-vignette build check_win check_win_dev check_win_old check_rhub: .devtools
 
 .PHONY:clean
 clean: clean-vignette
