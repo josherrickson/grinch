@@ -22,7 +22,7 @@ dependencies: DEVTOOLSARG=dependencies=TRUE
 
 .PHONY:test
 test:
-	@$(RCMD) "tinytest::test_all('.')"
+	@$(RCMD) "tinytest::build_install_test('.')"
 
 .PHONY:check
 check: FUNC=check
