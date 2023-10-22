@@ -1,5 +1,5 @@
 Package: grinch
-Title: Simple and efficient calculations of different means
+Title: Simple and Efficient Calculations of Different Means
 Version: 0.0.0.9000
 Authors@R:
     person("Josh", "Errickson", , "josh@errickson.net", role = c("aut", "cre"))
