@@ -1,11 +1,12 @@
 ##' @title You're a \code{mean} one, Mr. Grinch
 ##' @details Differents means are defined on different sets of numbers:
 ##' \itemize{
-##'   \item \code{arithmetic.mean}: Real or complex numbers
+##'   \item \code{arithmetic.mean}, \code{median}, \code{Mode}: Real or complex
+##'         numbers
 ##'   \item \code{geometric.mean}: Non-negative real numbers. (See below about
 ##'         behavior with a zero.)
 ##'   \item \code{harmonic.mean}: Positive real numbers.
-##'   \item \code{generalized.mean}/\code{power.mean} (including
+##'   \item \code{generalized.mean}, \code{power.mean} (including
 ##'         \code{quadratic.mean} and \code{cubic.mean}): Real numbers.
 ##'   \item \code{lehmer.mean}: Real numbers.
 ##' }
@@ -173,4 +174,17 @@ quasi_arithmetic.mean <- function(x,
   }
 
   finv(sum(f(x, ...), na.rm = na.rm)/length(x), ...)
+}
+
+##' @rdname grinch_means
+##' @export
+##' @importFrom stats median
+median <- stats::median
+
+##' @rdname grinch_means
+##' @export
+Mode <- function(x) {
+  ux <- unique(x)
+  tab <- tabulate(match(x, ux))
+  return(ux[tab == max(tab)])
 }
